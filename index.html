@@ -28,37 +28,155 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+          <h1>
+<a name="fliploadjs" class="anchor" href="#fliploadjs"><span class="octicon octicon-link"></span></a>Flipload.js</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Flipping HTML elements to show a loading indicator easily.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p>It's compatible with:</p>
+
+<ul>
+<li>Chrome</li>
+<li>Firefox</li>
+<li>Safari</li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>$ component install pazguille/flipload
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>See: <a href="https://github.com/component/component">https://github.com/component/component</a></p>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="standalone" class="anchor" href="#standalone"><span class="octicon octicon-link"></span></a>Standalone</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>Also, you can use the standalone version:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"flipload.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<h2>
+<a name="how-to" class="anchor" href="#how-to"><span class="octicon octicon-link"></span></a>How-to</h2>
+
+<p>First, you should add the CSS file to your markup:</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"flipload.css"</span><span class="nt">&gt;</span>
+</pre></div>
+
+<p>Then, you can start to use it and enjoy!</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">Flipload</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'flipload'</span><span class="p">);</span>
+    <span class="nx">box</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'box'</span><span class="p">),</span>
+    <span class="nx">flip</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Flipload</span><span class="p">(</span><span class="nx">box</span><span class="p">);</span>
+
+<span class="c1">// Start to load</span>
+<span class="nx">flip</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
+
+<span class="c1">// Loaded</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">flip</span><span class="p">.</span><span class="nx">done</span><span class="p">();</span>
+<span class="p">},</span> <span class="mi">5000</span><span class="p">);</span>
+</pre></div>
+
+<p><a href="http://pazguille.github.io/flipload/">View demo page</a></p>
+
+<h2>
+<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h2>
 
 <h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<a name="fliploadel-options" class="anchor" href="#fliploadel-options"><span class="octicon octicon-link"></span></a>Flipload(el, options)</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>Create a new instance of <code>Flipload</code>.</p>
+
+<ul>
+<li>
+<code>el</code>: A given <code>HTMLElement</code> to create an instance of <code>Flipload</code>.</li>
+<li>
+<code>options</code>: An optional Options <code>Object</code> to customize an instance.
+
+<ul>
+<li>
+<code>className</code>: Add a custom className to <code>reverse</code> element.</li>
+<li>
+<code>line</code>: Rotate around <code>horizontal</code> or <code>vertical</code> line. By default is <code>vertical</code> line.</li>
+<li>
+<code>theme</code>: Select what spinner theme you want to use: <code>light</code> or <code>dark</code>. By default is <code>dark</code>.</li>
+<li>
+<code>text</code>: Adds some text to the <code>spinner</code>.</li>
+</ul>
+</li>
+</ul><div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">flipload</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Flipload</span><span class="p">(</span><span class="nx">box</span><span class="p">,</span> <span class="p">[</span><span class="nx">options</span><span class="p">]);</span>
+</pre></div>
 
 <h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<a name="fliploadload" class="anchor" href="#fliploadload"><span class="octicon octicon-link"></span></a>Flipload#load()</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>Flips and shows the <code>spinner</code>.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">flipload</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
+</pre></div>
 
 <h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a name="fliploadupdate" class="anchor" href="#fliploadupdate"><span class="octicon octicon-link"></span></a>Flipload#update()</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>Update size and positon values of the <code>reverse</code> element and <code>spinner</code>.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">flipload</span><span class="p">.</span><span class="nx">update</span><span class="p">();</span>
+</pre></div>
+
+<h3>
+<a name="fliploadenable" class="anchor" href="#fliploadenable"><span class="octicon octicon-link"></span></a>Flipload#enable()</h3>
+
+<p>Enables an instance of <code>Flipload</code>.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">flipload</span><span class="p">.</span><span class="nx">enable</span><span class="p">();</span>
+</pre></div>
+
+<h3>
+<a name="fliploaddisable" class="anchor" href="#fliploaddisable"><span class="octicon octicon-link"></span></a>Flipload#disable()</h3>
+
+<p>Disables an instance of <code>Flipload</code>.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">flipload</span><span class="p">.</span><span class="nx">disable</span><span class="p">();</span>
+</pre></div>
+
+<h3>
+<a name="fliploadtoggle" class="anchor" href="#fliploadtoggle"><span class="octicon octicon-link"></span></a>Flipload#toggle()</h3>
+
+<p>Flips and shows or hides the <code>spinner</code> element.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">flipload</span><span class="p">.</span><span class="nx">toggle</span><span class="p">();</span>
+</pre></div>
+
+<h3>
+<a name="fliploaddone" class="anchor" href="#fliploaddone"><span class="octicon octicon-link"></span></a>Flipload#done()</h3>
+
+<p>Flips and hides the <code>spinner</code>.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">flipload</span><span class="p">.</span><span class="nx">done</span><span class="p">();</span>
+</pre></div>
+
+<h3>
+<a name="fliploaddestroy" class="anchor" href="#fliploaddestroy"><span class="octicon octicon-link"></span></a>Flipload#destroy()</h3>
+
+<p>Destroys an instance of <code>Flipload</code>.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">flipload</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+</pre></div>
+
+<h2>
+<a name="contact" class="anchor" href="#contact"><span class="octicon octicon-link"></span></a>Contact</h2>
+
+<ul>
+<li>Ali Raza (Web developer | Web designer | Web lover)</li>
+<li>E-mail: <a href="mailto:aliraxa@outlook.com">aliraxa@outlook.com</a>
+</li>
+<li>Web: <a href="http://imraza.com">http://imraza.com</a>
+</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2013. Licensed under the MIT license.</p>
         </section>
 
         <aside id="sidebar">
